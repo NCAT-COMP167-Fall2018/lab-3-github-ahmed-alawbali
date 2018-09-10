@@ -5,6 +5,9 @@
  */
 package personaltwitterfeed;
 
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Scanner;
 
 /**
@@ -25,11 +28,14 @@ public class PersonalTwitterFeed {
         System.out.println("What's your name, tweeter?");
         
         String tweeterName = keyboard.nextLine();
+       
+        
         
         System.out.println("Nice to meet you " + tweeterName + "!");
         System.out.println("Enter your tweets and I will add them to your timeline!");
         
         int numTweets = 0;
+        
         
         while(numTweets < (MAX_NUMBER_TWEETS - 1)) {
             tweets[numTweets] = keyboard.nextLine();
@@ -38,9 +44,11 @@ public class PersonalTwitterFeed {
             System.out.println(tweeterName + "'s Personal Twitter Feed:");
             for(int i = 0; i < numTweets; i++) {
                 System.out.println("- " + tweets[i]);
+                System.out.println(getCurrentTimeStamp());
+                 
             }
             
-            System.out.println();
+            System.out.println(); 
             System.out.println();
             System.out.println();
             System.out.println();
@@ -51,5 +59,15 @@ public class PersonalTwitterFeed {
         
         System.out.println("Your twitter feed is full");
     }
-    
+
+    private static String getCurrentTimeStamp() {
+      String pattern = "yyyy-MM-dd HH:mm:ss";
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+
+        String date ;
+        date = simpleDateFormat.format(new Date());
+           
+           return date;
+    }
+ 
 }
